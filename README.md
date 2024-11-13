@@ -41,18 +41,60 @@ The **Tavus API** generates an AI avatar video that mirrors the conversational t
 
 Gradio’s flexible design allows for smooth integration of API responses and video playback, letting users experience text and video responses side-by-side without noticeable delay. Additionally, Gradio’s video component supports autoplay, which enhances the interactive experience with the avatar.
 
-## Challenges Encountered and Solutions
-
-### Tavus API Video Generation Speed
-
-One of the primary challenges encountered was **video generation speed with the free version of the Tavus API**. While Tavus effectively generates avatar videos, the free version can take up to **two minutes** to process longer text inputs, which disrupts the real-time experience. Paid Tavus plans offer **priority processing**, significantly reducing generation times and better supporting real-time applications. For critical, time-sensitive implementations, upgrading to the paid plan ensures faster response times and minimizes user wait.
-
-### Dynamic Model and Agent Loading
-
-The code dynamically imports and initializes models and agents using the `importlib` module. This approach allows modular updates and supports a wide variety of model configurations, but it also requires verifying that all modules are correctly named and available. Any mismatch in naming or import errors would prevent the system from initializing correctly. To address this, careful attention to Swarmauri’s module paths and error handling ensures smooth setup and troubleshooting if issues arise.
-
 ## Deployment
 
 Gradio provides a **public URL** that enables the application to be accessed by anyone with an internet connection, without requiring additional deployment configurations. This public URL is especially valuable for quick sharing, allowing easy testing and user feedback collection.
 
 Deployment with Gradio involves simply running the `.launch()` function in the code, which generates a temporary link that can be accessed directly or embedded into other sites. For larger deployments, Gradio interfaces can also be hosted on cloud services, further extending accessibility.
+
+Here are the setup instructions for the Real-Time Conversational AI System with a Speaking Avatar:
+
+---
+
+### Setup Instructions
+
+1. **Clone the Repository (if applicable)**
+   - Clone the code repository to your local machine:
+     ```bash
+     git clone <repository_url>
+     cd <repository_directory>
+     ```
+
+2. **Install Required Python Packages**
+   - Make sure you have Python installed (preferably version 3.8 or above).
+   - Install the following dependencies:
+     ```bash
+     pip install gradio requests python-dotenv
+     pip install "swarmauri[full]==0.4.1"
+     ```
+
+3. **Obtain API Keys**
+   - **GroqModel API Key**: Register on Swarmauri’s platform to get access to GroqModel and obtain your API key.
+   - **Tavus API Key**: Sign up on Tavus API's website, navigate to your account settings, and create an API key.
+
+4. **Set Up Environment Variables**
+   - Create a `.env` file in the root directory of the project, and add your API keys:
+     ```bash
+     touch .env
+     ```
+   - Open the `.env` file and add the following lines:
+     ```plaintext
+     GROQ_API_KEY=<your_groqmodel_api_key>
+     TAVUS_API_KEY=<your_tavus_api_key>
+     ```
+   - Replace `<your_groqmodel_api_key>` and `<your_tavus_api_key>` with your actual API keys.
+
+5. **Run the Application**
+   - Start the Gradio app by running the Python script:
+     ```bash
+     python <your_script_name>.py
+     ```
+   - Replace `<your_script_name>` with the name of your Python file containing the code.
+
+6. **Access the Application**
+   - Once the script runs, Gradio will launch a local interface, and you’ll see a public URL generated in the terminal.
+   - Open the URL in a browser to access the application.
+
+---
+
+Following these steps will set up and launch your Real-Time Conversational AI System with a Speaking Avatar. Let me know if you need any additional guidance!
