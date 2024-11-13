@@ -53,14 +53,7 @@ Here are the setup instructions for the Real-Time Conversational AI System with 
 
 ### Setup Instructions
 
-1. **Clone the Repository (if applicable)**
-   - Clone the code repository to your local machine:
-     ```bash
-     git clone <repository_url>
-     cd <repository_directory>
-     ```
-
-2. **Install Required Python Packages**
+1. **Install Required Python Packages**
    - Make sure you have Python installed (preferably version 3.8 or above).
    - Install the following dependencies:
      ```bash
@@ -68,11 +61,11 @@ Here are the setup instructions for the Real-Time Conversational AI System with 
      pip install "swarmauri[full]==0.4.1"
      ```
 
-3. **Obtain API Keys**
+2. **Obtain API Keys**
    - **GroqModel API Key**: Register on Swarmauri’s platform to get access to GroqModel and obtain your API key.
    - **Tavus API Key**: Sign up on Tavus API's website, navigate to your account settings, and create an API key.
 
-4. **Set Up Environment Variables**
+3. **Set Up Environment Variables**
    - Create a `.env` file in the root directory of the project, and add your API keys:
      ```bash
      touch .env
@@ -84,17 +77,13 @@ Here are the setup instructions for the Real-Time Conversational AI System with 
      ```
    - Replace `<your_groqmodel_api_key>` and `<your_tavus_api_key>` with your actual API keys.
 
-5. **Run the Application**
+4. **Run the Application**
    - Start the Gradio app by running the Python script:
      ```bash
      python <your_script_name>.py
      ```
    - Replace `<your_script_name>` with the name of your Python file containing the code.
 
-6. **Access the Application**
+5. **Access the Application**
    - Once the script runs, Gradio will launch a local interface, and you’ll see a public URL generated in the terminal.
    - Open the URL in a browser to access the application.
-
----
-
-Following these steps will set up and launch your Real-Time Conversational AI System with a Speaking Avatar. Let me know if you need any additional guidance!
