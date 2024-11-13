@@ -1,9 +1,23 @@
-from dotenv import load_dotenv
+!pip install "swarmauri[full]==0.4.1"
+!pip install python-dotenv gradio requests
+
 import os
 import gradio as gr
 import importlib
 import requests
 import time
+from dotenv import load_dotenv
+
+# Import and set up models and classes dynamically
+modules = {
+    'GroqModel': 'swarmauri.standard.llms.concrete.GroqModel',
+    'SystemMessage': 'swarmauri.standard.messages.concrete.SystemMessage',
+    'SimpleConversationAgent': 'swarmauri.standard.agents.concrete.SimpleConversationAgent',
+    'MaxSystemContextConversation': 'swarmauri.standard.conversations.concrete.MaxSystemContextConversation',
+}
+for class_name, module_path in modules.items():
+    module = importlib.import_module(module_path)
+    globals()[class_name] = getattr(module, class_name)
 
 # Load environment variables from .env file
 load_dotenv()
@@ -44,10 +58,10 @@ def generate_avatar_video(text):
         url = "https://tavusapi.com/v2/videos"
         payload = {"replica_id": "rcefb7292e", "script": text}
         headers = {"x-api-key": TAVUS_API_KEY, "Content-Type": "application/json"}
-        
+
         response = requests.post(url, json=payload, headers=headers)
         response_data = response.json()
-        
+
         if response_data.get("status") != "queued":
             print("Failed to queue video generation.")
             return None, None
@@ -88,7 +102,7 @@ def converse(input_text, system_context, model_name, tone):
         headers = {"x-api-key": TAVUS_API_KEY}
         status_response = requests.get(video_check_url, headers=headers).json()
         print(status_response)
-        
+
         if status_response.get("status") == "ready":
             download_url = status_response.get("download_url")
             mp4_download_url = download_url + ".mp4"  # Ensure .mp4 extension
@@ -115,4 +129,4 @@ with gr.Interface(
     title="System Context Conversation Bot with Speaking Avatar",
     description="Interact with the chatbot, and receive a lifelike video response."
 ) as demo:
-    demo.launch(share=True)
+    demo.launch(share=True, debug=True)
