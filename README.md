@@ -1,11 +1,5 @@
 # Real-Time-Conversational-Chatbot-with-Speaking-Avatar
 
-Here is an updated documentation draft including Gradio’s benefits, challenges encountered, API choices, and deployment details:
-
----
-
-# Documentation: Real-Time Conversational AI System with Speaking Avatar
-
 This documentation provides a comprehensive overview of the **Conversational AI System with a Speaking Avatar**, which enables real-time interaction with an AI-driven avatar that responds visually and verbally with synchronized gestures and expressions.
 
 ## Overview
